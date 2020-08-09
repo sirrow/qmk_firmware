@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |IMEOFF|           |IMEON |   N  |   M  |   ,  |   .  |   /  |   -    |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  L1  |      |  Alt | Lgui |  L3  |                                       |  L4  | Rgui |   [  |   ]  |  L1  |
+ *   |  L1  |  CSA |  Alt | Lgui |  L3  |                                       |  L4  | Rgui |   [  |   ]  |  L1  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | LGui | App  |       |      |        |
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB ,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_NO,
         KC_LCTL,        LT(ARSB, KC_A),         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        LGUI_T(KC_Z),         LALT_T(KC_X),   LSFT_T(KC_C),   LCTL_T(KC_V),   KC_B,   LSFT(LCTL(KC_F2)),
-        MO(FNCT),KC_NO,    KC_LALT,   KC_LGUI,LT(BRCT,KC_ESC),
+        MO(FNCT),LSFT(LCTL(KC_LALT)),    KC_LALT,   KC_LGUI,LT(BRCT,KC_ESC),
                                               KC_LGUI, KC_APP,
                                                               KC_NO,
                                        	LCTL_T(KC_SPC),LGUI_T(KC_TAB),KC_ESC,
