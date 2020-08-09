@@ -15,7 +15,8 @@ enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   EPRM,
   VRSN,
-  RGB_SLD
+  RGB_SLD,
+  RPD
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -53,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                               KC_NO,
                                        	LCTL_T(KC_SPC),LGUI_T(KC_TAB),KC_ESC,
         // right hand
-	     KC_NO   ,    KC_6,   KC_7,  KC_8,   KC_9,   KC_0,             KC_BSLS,
+	     RPD   ,    KC_6,   KC_7,  KC_8,   KC_9,   KC_0,             KC_BSLS,
              KC_F12   ,    KC_Y,   KC_U,  KC_I,   KC_O,   KC_P,             KC_EQL,
 	     KC_H,   KC_J,  KC_K,   KC_L,   LSFT_T(KC_SCLN),          KC_QUOT,
 	LSFT(LCTL(KC_F3))   ,    KC_N,   LCTL_T(KC_M),  LSFT_T(KC_COMM),LALT_T(KC_DOT), LGUI_T(KC_SLSH),          KC_MINS,
@@ -393,6 +394,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   return MACRO_NONE;
 };
 
+bool rapid = false;
+int divider = 0;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     // dynamically generate these.
@@ -416,6 +420,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case RPD:
+      if (record->event.pressed) {
+        if (!rapid) {
+          divider = 0;
+        }
+        rapid = true;
+      }
+      if (!record->event.pressed) {
+        rapid = false;
+      }
+      break;
   }
   return true;
 }
@@ -429,7 +444,16 @@ void matrix_init_user(void) {
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-
+  if (rapid) {
+    if(divider == 0){
+      SEND_STRING(SS_DOWN(X_L));
+    }
+    if(divider == 20){
+      SEND_STRING(SS_UP(X_L));
+    }
+    divider++;
+    divider = divider % 40;
+  }
 };
 
 // Runs whenever there is a layer state change.
