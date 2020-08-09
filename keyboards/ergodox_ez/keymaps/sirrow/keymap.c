@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  Grv   |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   \    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |   =    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| CA-  |           |  F12 |------+------+------+------+------+--------|
  * | Ctrl   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '"   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |IMEOFF|           |IMEON |   N  |   M  |   ,  |   .  |   /  |   -    |
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_GRV,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_NO,
-        KC_TAB ,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_NO,
+        KC_TAB ,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   LCTL(LALT(KC_MINS)),
         KC_LCTL,        LT(ARSB, KC_A),         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        LGUI_T(KC_Z),         LALT_T(KC_X),   LSFT_T(KC_C),   LCTL_T(KC_V),   KC_B,   LSFT(LCTL(KC_F2)),
         MO(FNCT),LSFT(LCTL(KC_LALT)),    KC_LALT,   KC_LGUI,LT(BRCT,KC_ESC),
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                        	LCTL_T(KC_SPC),LGUI_T(KC_TAB),KC_ESC,
         // right hand
 	     KC_NO   ,    KC_6,   KC_7,  KC_8,   KC_9,   KC_0,             KC_BSLS,
-             KC_NO   ,    KC_Y,   KC_U,  KC_I,   KC_O,   KC_P,             KC_EQL,
+             KC_F12   ,    KC_Y,   KC_U,  KC_I,   KC_O,   KC_P,             KC_EQL,
 	     KC_H,   KC_J,  KC_K,   KC_L,   LSFT_T(KC_SCLN),          KC_QUOT,
 	LSFT(LCTL(KC_F3))   ,    KC_N,   LCTL_T(KC_M),  LSFT_T(KC_COMM),LALT_T(KC_DOT), LGUI_T(KC_SLSH),          KC_MINS,
                                   MO(SYMB),KC_RGUI,KC_LBRC,KC_RBRC,          MO(FNCT),
