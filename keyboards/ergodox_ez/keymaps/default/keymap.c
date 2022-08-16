@@ -4,7 +4,7 @@
 enum layers {
     BASE,  // default layer
     MAC,   // Mac Setting
-    FNCT,  // symbols
+    FNCT,  // function keys
     ARRW,  // arrow keys
     BRCT,  // brackets keys
     SYMB,  // symbols
