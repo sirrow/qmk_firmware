@@ -478,6 +478,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
 
+/*
     uint8_t layer = get_highest_layer(state);
     switch (layer) {
         case 0:
@@ -536,5 +537,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             break;
     }
 
+ */
     return state;
 };
