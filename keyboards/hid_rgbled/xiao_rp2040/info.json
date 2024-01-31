@@ -1,0 +1,20 @@
+{
+    "bootloader": "rp2040",
+    "processor": "RP2040",
+    "url": "",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0000",
+        "vid": "0xFEED"
+    },
+    "matrix_pins":{
+        "direct": [["GP26"]]
+    },
+    "ws2812": {
+        "pin": "GP12",
+        "driver": "vendor"
+    },
+    "rgblight": {
+        "max_brightness": 200
+    }
+}
