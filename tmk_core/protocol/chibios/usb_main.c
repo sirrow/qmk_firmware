@@ -44,6 +44,7 @@
 #include "usb_descriptor.h"
 #include "usb_driver.h"
 #include "usb_types.h"
+#include "rgblight.h"
 
 #ifdef NKRO_ENABLE
 #    include "keycode_config.h"
@@ -972,10 +973,8 @@ void raw_hid_send(uint8_t *data, uint8_t length) {
     chnWrite(&drivers.raw_driver.driver, data, length);
 }
 
-__attribute__((weak)) void raw_hid_receive(uint8_t *data, uint8_t length) {
-    // Users should #include "raw_hid.h" in their own code
-    // and implement this function there. Leave this as weak linkage
-    // so users can opt to not handle data coming in.
+void raw_hid_receive(uint8_t *data, uint8_t length) {
+    rgblight_setrgb(data[0], data[1], data[2]);
 }
 
 void raw_hid_task(void) {
