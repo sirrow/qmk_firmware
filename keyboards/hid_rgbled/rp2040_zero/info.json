@@ -15,6 +15,7 @@
         "driver": "vendor"
     },
     "rgblight": {
+        "led_count": 1,
         "max_brightness": 255
     }
 }
