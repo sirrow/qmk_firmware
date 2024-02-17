@@ -12,10 +12,11 @@
         "bootmagic": true,
         "command": false,
         "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true,
-        "rgblight": true
+        "extrakey": false,
+        "mousekey": false,
+        "nkro": false,
+        "rgblight": true,
+        "raw": true
     },
     "rgblight": {
         "saturation_steps": 8,
@@ -23,16 +24,16 @@
         "led_count": 1,
         "sleep": true,
         "animations": {
-          "breathing": true,
-          "rainbow_mood": true,
-          "rainbow_swirl": true,
-          "snake": true,
-          "knight": true,
-          "christmas": true,
-          "static_gradient": true,
+          "breathing": false,
+          "rainbow_mood": false,
+          "rainbow_swirl": false,
+          "snake": false,
+          "knight": false,
+          "christmas": false,
+          "static_gradient": false,
           "rgb_test": true,
-          "alternating": true,
-          "twinkle": true
+          "alternating": false,
+          "twinkle": false
         }
     },
     "layouts": {

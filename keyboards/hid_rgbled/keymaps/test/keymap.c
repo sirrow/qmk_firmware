@@ -5,6 +5,12 @@
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
     [0] = LAYOUT_ortho_1x1(KC_ENT)
 };
 // clang-format on
+
+void keyboard_post_init_user(void) {
+    rgblight_enable();
+    rgblight_mode(RGBLIGHT_MODE_RGB_TEST);
+}
