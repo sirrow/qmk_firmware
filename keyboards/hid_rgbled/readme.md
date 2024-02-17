@@ -10,7 +10,8 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    make hid_rgbled:default
+    make hid_rgbled:xiao_rp2040:default
+    make hid_rgbled:(your add direcry):default
 
 Flashing example for this keyboard:
 
