@@ -1,0 +1,45 @@
+{
+    "manufacturer": "hsgw",
+    "keyboard_name": "hid_rgbled",
+    "maintainer": "hsgw",
+    "url": "",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0000",
+        "vid": "0xFEED"
+    },
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": false,
+        "mousekey": false,
+        "nkro": false,
+        "rgblight": true,
+        "raw": true
+    },
+    "rgblight": {
+        "saturation_steps": 8,
+        "brightness_steps": 8,
+        "sleep": true,
+        "animations": {
+          "breathing": false,
+          "rainbow_mood": false,
+          "rainbow_swirl": false,
+          "snake": false,
+          "knight": false,
+          "christmas": false,
+          "static_gradient": false,
+          "rgb_test": true,
+          "alternating": false,
+          "twinkle": false
+        }
+    },
+    "layouts": {
+        "LAYOUT_ortho_1x1": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0}
+            ]
+        }
+    }
+}
