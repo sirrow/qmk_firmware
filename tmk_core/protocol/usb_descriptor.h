@@ -42,7 +42,7 @@
  */
 
 #pragma once
-
+#define RAW_ENABLE
 #include <LUFA/Drivers/USB/USB.h>
 
 #ifdef PROTOCOL_CHIBIOS

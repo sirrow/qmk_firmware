@@ -55,6 +55,8 @@
 #include "usb_device_state.h"
 #include <util/atomic.h>
 
+#include "rgblight.h"
+
 #ifdef VIRTSER_ENABLE
 #    include "virtser.h"
 #endif
@@ -137,16 +139,30 @@ void raw_hid_send(uint8_t *data, uint8_t length) {
     send_report(RAW_IN_EPNUM, data, RAW_EPSIZE);
 }
 
-/** \brief Raw HID Receive
- *
- * FIXME: Needs doc
- */
-__attribute__((weak)) void raw_hid_receive(uint8_t *data, uint8_t length) {
-    // Users should #include "raw_hid.h" in their own code
-    // and implement this function there. Leave this as weak linkage
-    // so users can opt to not handle data coming in.
+enum HID_RGBLED_COMMAND { HID_PING = 0, HID_SET_HSV, HID_SET_RGB };
+void raw_hid_receive(uint8_t *data, uint8_t length) {
+    switch (data[0]) {
+        case HID_PING:
+            data[0] = 1;
+            data[1] = 'R';
+            data[2] = 'G';
+            data[3] = 'B';
+            break;
+        case HID_SET_HSV:
+            rgblight_sethsv_noeeprom(data[1], data[2], data[3]);
+            data[0] = 1;
+            break;
+        case HID_SET_RGB:
+            rgblight_setrgb(data[1], data[2], data[3]);
+            data[0] = 1;
+            break;
+        default:
+            data[1] = data[0];
+            data[0] = 0;
+            break;
+    }
+    raw_hid_send(data, length);
 }
-
 /** \brief Raw HID Task
  *
  * FIXME: Needs doc
