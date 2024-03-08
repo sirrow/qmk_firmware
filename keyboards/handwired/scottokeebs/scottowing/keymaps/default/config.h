@@ -21,3 +21,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 135
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM_PER_KEY
+#define WS2812_BYTE_ORDER WS2812_BYTE_ORDER_RGB
