@@ -70,3 +70,10 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     }
     raw_hid_send(data, length);
 }
+
+void keyboard_post_init_user(void) {
+    // 起動時にRGBLEDを有効化して消灯する
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    rgblight_sethsv_noeeprom(0,0,0);
+}
