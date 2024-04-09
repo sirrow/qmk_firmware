@@ -4,6 +4,8 @@
 #include QMK_KEYBOARD_H
 #include "raw_hid.h"
 #include "rgb_matrix.h"
+#include "hsv_table.h"
+
 
 enum layer_names {
     _WIN,
@@ -74,7 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-enum HID_RGBLED_COMMAND { HID_PING = 0, HID_SET_HSV, HID_SET_RGB };
+uint8_t led_min;
+uint8_t led_max;
+enum HID_RGBLED_COMMAND { HID_PING = 0, HID_SET_HSV, HID_SET_RGB, HID_SET_HSV_INDEX };
 void raw_hid_receive(uint8_t *data, uint8_t length) {
     switch (data[0]) {
         case HID_PING:
@@ -93,6 +97,17 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
             data[0] = 1;
             break;
 */
+        case HID_SET_HSV_INDEX:
+            hsvtable[data[1]][0] = data[2];
+            hsvtable[data[1]][1] = data[3];
+            hsvtable[data[1]][2] = data[4];
+            /*
+            if(data[1] == 14 ){
+                RGB_MATRIX_USE_LIMITS(led_min, led_max);
+            }
+            */
+            data[0] = 1;
+            break;
         default:
             data[1] = data[0];
             data[0] = 0;
